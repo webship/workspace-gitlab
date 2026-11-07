@@ -1,0 +1,55 @@
+{
+  "name": "@webship/workspace-gitlab",
+  "version": "1.0.0",
+  "description": "GitLab for Webship Workspace: the GITLAB menu on every project whose remote is on the GitLab host (git.drupalcode.org by default: repository, issues, merge requests, open one from the branch), the repository chip, clone when a new folder is made, and the credential the dashboard uses there. A provider of @webship/workspace-forge.",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "private": true,
+  "license": "ISC",
+  "repository": "github:webship/workspace-gitlab",
+  "files": [
+    "dist/src",
+    "config",
+    "features",
+    "scripts",
+    "README.md",
+    "ddev",
+    "host-mounts.txt"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "workspacePlugin": {
+    "name": "gitlab",
+    "label": "GitLab",
+    "settingsFile": "plugin.gitlab.settings.yml",
+    "settingsTemplate": "config/plugin.gitlab.settings.yml",
+    "labels": "config/settings.labels.yml",
+    "legacySettingsKey": "git.drupal",
+    "scripts": {
+      "hostInstall": "scripts/host-install.sh"
+    },
+    "features": [
+      "features/gitlab.feature"
+    ],
+    "ddev": {
+      "compose": [
+        "ddev/docker-compose.gitlab-cli.yaml"
+      ],
+      "hostMounts": [
+        "~/.config/glab-cli"
+      ]
+    }
+  },
+  "dependencies": {
+    "@webship/workspace-forge": "github:webship/workspace-forge#1.0.x"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@webship/workspace-plugin-api": "github:webship/workspace-plugin-api#1.0.x",
+    "typescript": "^5.9.0"
+  }
+}

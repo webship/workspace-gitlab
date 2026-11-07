@@ -1,0 +1,11 @@
+# GitLab — core/config/plugin.gitlab.settings.yml
+#
+# How the dashboard reaches a GitLab instance. Drupal's own forge, git.drupalcode.org, is a GitLab, so that is the default host; set gitlab.com or a self-hosted instance instead. The token is a personal access token with read_api (and api for merge requests from the dashboard).
+# The GitLab instance: git.drupalcode.org (drupal.org's), gitlab.com, or your own.
+host: git.drupalcode.org
+# The account name that GitLab knows you by.
+username: CHANGE_ME
+# The address commits pushed there carry. Blank falls back to contributor.email.
+email: CHANGE_ME
+# A personal access token (Preferences → Access tokens) with read_api; api for merge requests from the dashboard. Read by glab as GITLAB_TOKEN.
+token: CHANGE_ME

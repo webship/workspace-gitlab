@@ -1,0 +1,13 @@
+# Labels for core/config/plugin.gitlab.settings.yml, merged into the Settings page.
+host:
+  label: Host
+  info: 'The GitLab instance: git.drupalcode.org (drupal.org''s), gitlab.com, or your own.'
+username:
+  label: Username
+  info: 'The account name that GitLab knows you by.'
+email:
+  label: Commit email
+  info: 'The address commits pushed there carry. Blank falls back to contributor.email.'
+token:
+  label: Token
+  info: 'A personal access token (Preferences → Access tokens) with read_api; api for merge requests from the dashboard. Read by glab as GITLAB_TOKEN.'
