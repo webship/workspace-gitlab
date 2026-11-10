@@ -1,6 +1,6 @@
 {
   "name": "@webship.co/workspace-gitlab",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "GitLab for Webship Workspace: the GITLAB menu on every project whose remote is on the GitLab host (git.drupalcode.org by default: repository, issues, merge requests, open one from the branch), the repository chip, clone when a new folder is made, and the credential the dashboard uses there. A provider of @webship.co/workspace-forge.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -47,11 +47,11 @@
     }
   },
   "dependencies": {
-    "@webship.co/workspace-forge": "^1.0.0"
+    "@webship.co/workspace-forge": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
-    "@webship.co/workspace-plugin-api": "^1.0.0",
+    "@webship.co/workspace-plugin-api": "^1.0.2",
     "typescript": "^5.9.0"
   },
   "publishConfig": {
