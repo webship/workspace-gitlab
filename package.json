@@ -27,6 +27,14 @@
   "workspacePlugin": {
     "name": "gitlab",
     "label": "GitLab",
+    "needs": {
+      "commands": [
+        {
+          "command": "glab",
+          "hint": "https://gitlab.com/gitlab-org/cli#installation"
+        }
+      ]
+    },
     "settingsFile": "plugin.gitlab.settings.yml",
     "settingsTemplate": "config/plugin.gitlab.settings.yml",
     "labels": "config/settings.labels.yml",
