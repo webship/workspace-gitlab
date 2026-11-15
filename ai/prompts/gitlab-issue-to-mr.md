@@ -29,3 +29,5 @@ When the pipeline is green: the address of the merge request, what was tested, a
 Checkpoints are still open. Leave the merge to me.
 """
 ```
+
+The text between the triple quotes is plain: it can be given to another AI command-line assistant as it is.
