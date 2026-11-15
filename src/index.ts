@@ -15,6 +15,12 @@ import { gitlabProvider } from './lib/provider';
 
 export { gitlabProvider };
 
+/** The AI items the installer places: agents in ai-agents/, skills in ai-skills/, commands in ai-commands/, prompts in ai-prompts/. */
+export const AGENTS: string[] = ['gitlab-issue-mr-worker'];
+export const SKILLS: string[] = ['gitlab-forge'];
+export const AI_COMMANDS: string[] = ['gitlab-status'];
+export const PROMPTS: string[] = ['gitlab-issue-to-mr'];
+
 export function register(api: PluginApi): void {
   registerForge(api, gitlabProvider(api));
 }

@@ -1,7 +1,7 @@
 {
   "name": "@webship.co/workspace-gitlab",
   "version": "1.0.8",
-  "description": "GitLab for Webship Workspace: the GITLAB menu on every project whose remote is on the GitLab host (git.drupalcode.org by default: repository, issues, merge requests, open one from the branch), the repository chip, clone when a new folder is made, and the credential the dashboard uses there. A provider of @webship.co/workspace-forge.",
+  "description": "GitLab for Webship Workspace: the GITLAB menu on every project whose remote is on the GitLab host (git.drupalcode.org by default: repository, issues, merge requests, open one from the branch), the repository chip, clone when a new folder is made, and the credential the dashboard uses there. It carries its AI items, each placed in the workspace folder of its kind: an agent, a skill, a command and a prompt. A provider of @webship.co/workspace-forge.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "license": "ISC",
@@ -11,12 +11,14 @@
   },
   "files": [
     "dist/src",
+    "ai",
     "config",
     "features",
     "scripts",
     "README.md",
     "ddev",
-    "host-mounts.txt"
+    "host-mounts.txt",
+    "docs"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -28,6 +30,12 @@
     "name": "gitlab",
     "label": "GitLab",
     "needs": {
+      "plugins": [
+        "ai-agents",
+        "ai-skills",
+        "ai-commands",
+        "ai-prompts"
+      ],
       "commands": [
         {
           "command": "glab",
@@ -41,6 +49,20 @@
     "legacySettingsKey": "git.drupal",
     "scripts": {
       "hostInstall": "scripts/host-install.sh"
+    },
+    "ai": {
+      "agents": [
+        "ai/agents/gitlab-issue-mr-worker.md"
+      ],
+      "skills": [
+        "ai/skills/gitlab-forge"
+      ],
+      "commands": [
+        "ai/commands/gitlab-status.md"
+      ],
+      "prompts": [
+        "ai/prompts/gitlab-issue-to-mr.md"
+      ]
     },
     "features": [
       "features/gitlab.feature"
