@@ -1,0 +1,21 @@
+# glab 1.129.0 (e380f5c): each command an item may name, with the flags its --help lists
+glab auth status --all --help --hostname --jq --output --show-token
+glab issue list --all --assignee --author --closed --confidential --created-after --created-before --epic --group --help --in --issue-type --iteration --jq --label --milestone --not-assignee --not-author --not-label --order --output --output-format --page --per-page --repo --search --sort --updated-after --updated-before
+glab issue view --comments --help --jq --output --page --per-page --repo --system-logs --web
+glab issue create --assignee --attach --confidential --description --description-file --due-date --epic --help --label --linked-issues --linked-mr --link-type --milestone --no-editor --recover --repo --template --time-estimate --time-spent --title --web --weight --yes
+glab issue update --assignee --attach --confidential --description --description-file --due-date --estimate --help --label --lock-discussion --milestone --public --remove-estimate --remove-time-spent --repo --spend --title --unassign --unlabel --unlock-discussion --weight
+glab issue note --attach --help --internal --message --repo
+glab mr list --all --assignee --author --closed --created-after --created-before --deployed-after --deployed-before --draft --environment --group --help --jq --label --merged --milestone --not-draft --not-label --order --output --page --per-page --repo --reviewer --search --sort --source-branch --target-branch
+glab mr view --comments --help --jq --output --page --per-page --repo --resolved --system-logs --unresolved --web
+glab mr create --allow-collaboration --assignee --attach --auto-merge --copy-issue-labels --create-source-branch --description --description-file --draft --fill --fill-commit-body --head --help --label --milestone --no-editor --push --recover --related-issue --remove-source-branch --repo --reviewer --signoff --source-branch --squash-before-merge --target-br --target-branch --template --title --web --wip --yes
+glab mr update --assignee --attach --description --description-file --draft --fill --fill-commit-body --help --label --lock-discussion --milestone --ready --remove-source-branch --repo --reviewer --squash-before-merge --state --target-branch --title --unassign --unlabel --unlock-discussion --wip --yes
+glab mr merge --auto-merge --help --message --rebase --remove-source-branch --repo --sha --squash --squash-message --yes
+glab mr diff --color --help --raw --repo
+glab ci status --branch --compact --help --jq --live --output --repo --wait
+glab ci list --help --jq --name --order --output --page --per-page --ref --repo --scope --sha --sort --source --status --updated-after --updated-before --username --yaml-errors
+glab repo view --branch --help --jq --output --web
+glab repo clone --active --archived --branch --depth --exclude-subgroup --group --help --include-subgroups --mine --page --paginate --per-page --preserve-namespace --single-branch --visibility --wiki --with-issues-enabled --with-mr-enabled --with-shared
+glab api --field --form --header --help --hostname --include --input --method --output --paginate --placeholder --raw-field --silent
+glab ci get --branch --help --jq --merge-request --output --pipeline-id --repo --status --with-job-details --with-variables
+glab ci trace --branch --help --pipeline-id --repo
+glab ci view --branch --help --pipelineid --repo --web
