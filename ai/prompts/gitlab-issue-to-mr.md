@@ -6,6 +6,7 @@ Work issue <number> of the GitLab project of the project <project> to a merge re
 # ~/workspace/<folder>/<project> · container-based (DDEV by default) · glab and git run on the machine
 # stop if glab is not signed in on the host of the remote (glab auth status --hostname <host>)
 # never print a token; never tick "Reviewed by a human" or "Code review by maintainers"; never merge
+# a feature to write or a run to read: the book Automated Functional Testing Recipes first (its README.md, then the matching chapter), from .claude/automated-functional-testing-recipes/ in the project, ~/.claude/automated-functional-testing-recipes/ or https://github.com/webship/webship-js-ai-agent/tree/2.0.x/automated-functional-testing-recipes
 
 1. cd ~/workspace/<folder>/<project> ; git status --short ; git remote get-url origin
    stop if there are changes that are not yours
