@@ -9,6 +9,8 @@ import { repoPathAt } from '@webship.co/workspace-forge';
 import type { ForgeItem, ForgeProvider, ForgeRepo } from '@webship.co/workspace-forge';
 
 const configured = (v: unknown) => { const s = String(v == null ? '' : v).trim(); return s && s !== 'CHANGE_ME' ? s : null; };
+/** One word for a shell: single-quoted. A remote or a branch name may hold `;` or `$`. */
+const shq = (v: unknown) => `'${String(v).replace(/'/g, `'\\''`)}'`;
 
 export function gitlabProvider(api: PluginApi): ForgeProvider {
   const settings = () => api.settings.read() || {};
@@ -47,7 +49,14 @@ export function gitlabProvider(api: PluginApi): ForgeProvider {
     urls: (repo) => ({ issues: `${repo.web}/-/issues`, pulls: `${repo.web}/-/merge_requests`, newIssue: `${repo.web}/-/issues/new`, newPull: (branch) => `${repo.web}/-/merge_requests/new?merge_request%5Bsource_branch%5D=${encodeURIComponent(branch)}` }),
     listIssues: (repo, lib, e) => list('issues', repo, lib, e),
     listPulls: (repo, lib, e) => list('merge_requests', repo, lib, e),
-    newPullCommand: (_repo, branch) => `git push -u origin ${branch} && glab mr create --source-branch ${branch} --fill`,
+    // glab is asked first: without it, or without a login it can use at this host, nothing is pushed and the line says
+    // which step is missing. Then the branch goes to the remote the repository was found on (not always origin), and
+    // the merge request is opened on that repository, not on whichever one glab would read from the folder.
+    newPullCommand: (repo, branch) => [
+      `command -v glab >/dev/null 2>&1 || { echo ${shq(`glab is not installed, and opening a merge request from here needs it: https://gitlab.com/gitlab-org/cli (then glab auth login --hostname ${host()}). Or open one on ${repo.web}/-/merge_requests/new?merge_request%5Bsource_branch%5D=${encodeURIComponent(branch)}. Nothing was pushed.`)}; exit 1; }`,
+      `{ [ -n "\${GITLAB_TOKEN:-}" ] || glab auth status --hostname ${shq(host())} >/dev/null 2>&1; } || { echo ${shq(`glab is not signed in at ${host()}: run glab auth login --hostname ${host()}, then try again. Nothing was pushed.`)}; exit 1; }`,
+      `git push -u ${shq(repo.remote)} ${shq(branch)} && glab mr create --repo ${shq(repo.web)} --source-branch ${shq(branch)} --fill`,
+    ].join('; '),
     clone: { pattern: /^[\w.-]+(\/[\w.-]+)+$|^(https?:\/\/|git@)[\w.-]+[:/][\w./-]+$/, placeholder: 'project/webship', help: 'A GitLab repository is group/name (or deeper), or its clone URL.' },
     tokenHint: 'token in core/config/plugin.gitlab.settings.yml',
   };
