@@ -4,6 +4,9 @@
  * opens merge requests when it is there.
  */
 
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import type { PluginApi, PluginLib } from '@webship.co/workspace-plugin-api';
 import { repoPathAt } from '@webship.co/workspace-forge';
 import type { ForgeItem, ForgeProvider, ForgeRepo } from '@webship.co/workspace-forge';
@@ -11,6 +14,20 @@ import type { ForgeItem, ForgeProvider, ForgeRepo } from '@webship.co/workspace-
 const configured = (v: unknown) => { const s = String(v == null ? '' : v).trim(); return s && s !== 'CHANGE_ME' ? s : null; };
 /** One word for a shell: single-quoted. A remote or a branch name may hold `;` or `$`. */
 const shq = (v: unknown) => `'${String(v).replace(/'/g, `'\\''`)}'`;
+
+/**
+ * Run `fn` with curl arguments that read these header lines from a file only this user can read, removed
+ * after. On curl's command line a token is readable by every account of the machine for as long as curl
+ * runs (`ps`, /proc/<pid>/cmdline); `-H @file` (curl 7.55+) keeps it off.
+ */
+export async function withHeaderFile<T>(headers: string[], fn: (args: string[]) => Promise<T>): Promise<T> {
+  if (!headers.length) return fn([]);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ws-curl-'));
+  const file = path.join(dir, 'headers');
+  fs.writeFileSync(file, `${headers.join('\n')}\n`, { mode: 0o600 });
+  try { return await fn(['-H', `@${file}`]); } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+}
+
 
 export function gitlabProvider(api: PluginApi): ForgeProvider {
   const settings = () => api.settings.read() || {};
@@ -22,8 +39,9 @@ export function gitlabProvider(api: PluginApi): ForgeProvider {
   };
 
   async function rest(lib: PluginLib, e: NodeJS.ProcessEnv, url: string): Promise<any[]> {
-    const headers = e.GITLAB_TOKEN ? ['-H', `PRIVATE-TOKEN: ${e.GITLAB_TOKEN}`] : [];
-    const out = await lib.run('curl', ['-sS', '-m', '30', ...headers, url], process.env.HOME, { timeoutMs: 40 * 1000, env: process.env });
+    // The token in a header file, never on curl's command line (withHeaderFile).
+    const secret = e.GITLAB_TOKEN ? [`PRIVATE-TOKEN: ${e.GITLAB_TOKEN}`] : [];
+    const out = await withHeaderFile(secret, (auth) => lib.run('curl', ['-sS', '-m', '30', ...auth, url], process.env.HOME, { timeoutMs: 40 * 1000, env: process.env }));
     if (!out.ok) throw new Error(lib.cliError(String(out.stderr || out.stdout)));
     const data = JSON.parse(String(out.stdout));
     if (data && data.message && !Array.isArray(data)) throw new Error(String(data.message));
