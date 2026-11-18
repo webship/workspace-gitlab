@@ -1,6 +1,6 @@
 {
   "name": "@webship.co/workspace-gitlab",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "GitLab for Webship Workspace: the GITLAB menu on every project whose remote is on the GitLab host (git.drupalcode.org by default: repository, issues, merge requests, open one from the branch), the repository chip, clone when a new folder is made, and the credential the dashboard uses there. It carries its AI items, each placed in the workspace folder of its kind: an agent, a skill, a command and a prompt. A provider of @webship.co/workspace-forge.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
