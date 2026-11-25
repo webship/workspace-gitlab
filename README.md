@@ -8,6 +8,30 @@ host. A provider of [`@webship.co/workspace-forge`](https://github.com/webship/w
 
 The lists come from the GitLab REST API (`/api/v4/projects/<path>/issues`, `/merge_requests`) with the token as `PRIVATE-TOKEN`, so they work with or without `glab`; a merge request from the current branch is `glab mr create --fill` in a terminal in the project (glab reads `GITLAB_HOST` and `GITLAB_TOKEN`). The host is a setting: git.drupalcode.org by default, which is where the Webship projects live, and the old `git.drupal` block of settings.yml is carried into the plugin's file on install.
 
+## The issues as work items
+
+The plugin is also a provider of the tracker family, [`@webship.co/workspace-tracker`](https://github.com/webship/workspace-tracker).
+With a token set, **GITLAB → Issues — get, analyze, work…** takes the place of the plain issues list. It opens the issues
+of the project as work items:
+
+- the views: open, mine, assigned to someone, the current milestone (iterations are a paid feature), the board (its label
+  lists) and a search;
+- one issue: each author's standing from their project membership (Developer and above are inside; Guests and Reporters,
+  who can open issues, are not), Analyze (read-only), Do the work, Result and Runs.
+
+**Do the work** reads the issue once into a spec under `specs/`, as data. The workspace's author role (Claude Code by default)
+then works it on a new branch from the project's default branch, or in a worktree, in a screen session you watch. With
+`tracker.allow_writes: true`, the Result tab previews a **draft** merge request and a note. Nothing is posted until you
+click; the dashboard pushes with the token through git's askpass. Time tracking (a worklog with its summary), closing and
+reopening, moving to a board list, labels, an assignee and new issues are there too, each a line in `actions.log`. Epics
+are not in the Community Edition, so none is offered.
+
+`scheme: http` serves a GitLab of your own on a local address without TLS (`http://127.0.0.1:8929`).
+
+The session holds no token and never pushes or posts. An issue opened, or last edited, by someone below Developer is
+analyze-only unless you confirm it by that name. **Do the work only on issues you trust.** The guards, the sandbox and
+every `tracker:` key are in the tracker's README.
+
 ## Use it
 
 ```bash

@@ -43,6 +43,33 @@ git remote -v                                       # is a remote on the host?
 cd ~/workspace && bash core/scripts/plugins.sh --list     # gitlab: ready?
 ```
 
+## The issues as work items
+
+With a token set, **GITLAB → Issues — get, analyze, work…** takes the place of the plain issues list.
+It opens the issues of the project as work items (the tracker family, `@webship.co/workspace-tracker`).
+The views are:
+
+- the open issues;
+- mine;
+- the ones assigned to someone;
+- the current milestone (iterations are a paid feature);
+- the board, by its label lists;
+- a search.
+
+One issue has these tabs: Overview (each author's standing from their project membership), Analyze
+(read-only), Do the work, Result and Runs. In Do the work, the workspace's author role (its default
+AI CLI) works the issue on a new branch from the default branch, in a screen session the person
+watches.
+
+With `allow_writes: true` in the `tracker:` block, a person may also post a note, log time, close,
+reopen, move it to a board list, label it, assign it, and open a draft merge request from the run's
+branch. Each is a click after a preview, and each is a line in `core/workspace-app/actions.log`.
+
+The issue's text is data written by other people. The session reads it from `01-story.md`, holds no
+token, and never pushes or posts: the dashboard does every write. An issue opened, or last edited,
+by someone below Developer (Guests and Reporters included) is analyze-only unless the person confirms
+it by that name. Work only issues you trust.
+
 ## Turn it on, and check it
 
 ```bash
@@ -64,6 +91,8 @@ The same four steps are buttons on the page Settings → Plugins of the dashboar
 | `username:` | The account name that GitLab knows the person by. |
 | `email:` | The address commits pushed there carry. |
 | `token:` | A personal access token with `read_api`; `api` for merge requests from the dashboard. |
+| `scheme:` | `https`, or `http` for a GitLab of your own served without TLS on a local address. Every URL the plugin builds uses it. |
+| `tracker:` | The issues as work items (`@webship.co/workspace-tracker`): `allow_writes` (off by default: nothing is written to GitLab), `max_agents`, `default_scope`, `scopes`, `work_in` (`branch` or `worktree`), `sandbox` (`required` by default), `network_domains`, `allow_web`, `comments_from`, `outsider_items`, `draft`. |
 
 With a token, a command the dashboard starts gets it as `GITLAB_TOKEN`, with `GITLAB_HOST` set to
 `host:`, which is what `glab` reads. With no token the lists still answer for a public project and

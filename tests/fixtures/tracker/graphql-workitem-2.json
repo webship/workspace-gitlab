@@ -1,0 +1,76 @@
+{
+ "data": {
+  "project": {
+   "workItems": {
+    "nodes": [
+     {
+      "widgets": [
+       {
+        "type": "ASSIGNEES"
+       },
+       {
+        "type": "AWARD_EMOJI"
+       },
+       {
+        "type": "CRM_CONTACTS"
+       },
+       {
+        "type": "CURRENT_USER_TODOS"
+       },
+       {
+        "type": "DESCRIPTION",
+        "lastEditedAt": "2026-11-25T06:56:38Z",
+        "lastEditedBy": {
+         "id": "gid://gitlab/User/3",
+         "username": "reporter1"
+        }
+       },
+       {
+        "type": "DESIGNS"
+       },
+       {
+        "type": "DEVELOPMENT"
+       },
+       {
+        "type": "EMAIL_PARTICIPANTS"
+       },
+       {
+        "type": "ERROR_TRACKING"
+       },
+       {
+        "type": "HIERARCHY"
+       },
+       {
+        "type": "LABELS"
+       },
+       {
+        "type": "LINKED_ITEMS"
+       },
+       {
+        "type": "MILESTONE"
+       },
+       {
+        "type": "NOTES"
+       },
+       {
+        "type": "NOTIFICATIONS"
+       },
+       {
+        "type": "PARTICIPANTS"
+       },
+       {
+        "type": "START_AND_DUE_DATE"
+       },
+       {
+        "type": "TIME_TRACKING"
+       },
+       {
+        "type": "LINKED_RESOURCES"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

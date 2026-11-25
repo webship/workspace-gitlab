@@ -32,6 +32,8 @@ export async function withHeaderFile<T>(headers: string[], fn: (args: string[]) 
 export function gitlabProvider(api: PluginApi): ForgeProvider {
   const settings = () => api.settings.read() || {};
   const host = () => String(configured(settings().host) || 'git.drupalcode.org').toLowerCase();
+  // https unless the settings say http: a GitLab of your own on a local address is often served without TLS.
+  const scheme = () => (String(settings().scheme || '').trim().toLowerCase() === 'http' ? 'http' : 'https');
 
   const env = (): NodeJS.ProcessEnv | null => {
     const t = configured(settings().token);
@@ -49,7 +51,7 @@ export function gitlabProvider(api: PluginApi): ForgeProvider {
   }
 
   async function list(kind: 'issues' | 'merge_requests', repo: ForgeRepo, lib: PluginLib, e: NodeJS.ProcessEnv): Promise<ForgeItem[]> {
-    const data = await rest(lib, e, `https://${host()}/api/v4/projects/${encodeURIComponent(repo.path)}/${kind}?state=opened&per_page=20&order_by=updated_at`);
+    const data = await rest(lib, e, `${scheme()}://${host()}/api/v4/projects/${encodeURIComponent(repo.path)}/${kind}?state=opened&per_page=20&order_by=updated_at`);
     return data.map((i) => ({ number: i.iid, title: i.title, url: i.web_url, author: i.author && i.author.username, updated: i.updated_at }));
   }
 
@@ -62,8 +64,8 @@ export function gitlabProvider(api: PluginApi): ForgeProvider {
     pullsLabel: 'Merge requests',
     env,
     auth: () => { const s = settings(); return { username: configured(s.username) || undefined, email: configured(s.email) || undefined, how: configured(s.token) ? 'token' : 'none' }; },
-    repoOf: (url, remote) => { const p = repoPathAt(host(), url); return p ? { path: p, web: `https://${host()}/${p}`, remote } : null; },
-    cloneUrl: (spec) => (/^(https?:\/\/|git@)/.test(spec) ? spec : `https://${host()}/${spec.replace(/\.git$/, '')}.git`),
+    repoOf: (url, remote) => { const p = repoPathAt(host(), url); return p ? { path: p, web: `${scheme()}://${host()}/${p}`, remote } : null; },
+    cloneUrl: (spec) => (/^(https?:\/\/|git@)/.test(spec) ? spec : `${scheme()}://${host()}/${spec.replace(/\.git$/, '')}.git`),
     urls: (repo) => ({ issues: `${repo.web}/-/issues`, pulls: `${repo.web}/-/merge_requests`, newIssue: `${repo.web}/-/issues/new`, newPull: (branch) => `${repo.web}/-/merge_requests/new?merge_request%5Bsource_branch%5D=${encodeURIComponent(branch)}` }),
     listIssues: (repo, lib, e) => list('issues', repo, lib, e),
     listPulls: (repo, lib, e) => list('merge_requests', repo, lib, e),

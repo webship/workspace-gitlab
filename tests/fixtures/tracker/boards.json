@@ -1,0 +1,67 @@
+[
+ {
+  "id": 1,
+  "name": "Development",
+  "hide_backlog_list": false,
+  "hide_closed_list": false,
+  "project": {
+   "id": 1,
+   "description": null,
+   "name": "tracker-proof",
+   "name_with_namespace": "proof / tracker-proof",
+   "path": "tracker-proof",
+   "path_with_namespace": "proof/tracker-proof",
+   "created_at": "2026-11-25T06:55:39.775Z",
+   "default_branch": "main",
+   "tag_list": [],
+   "topics": [],
+   "ssh_url_to_repo": "ssh://git@127.0.0.1:2224/proof/tracker-proof.git",
+   "http_url_to_repo": "https://gitlab.test/proof/tracker-proof.git",
+   "web_url": "https://gitlab.test/proof/tracker-proof",
+   "readme_url": "https://gitlab.test/proof/tracker-proof/-/blob/main/README.md",
+   "forks_count": 0,
+   "avatar_url": null,
+   "star_count": 0,
+   "last_activity_at": "2026-11-25T06:55:39.746Z",
+   "visibility": "public",
+   "namespace": {
+    "id": 2,
+    "name": "proof",
+    "path": "proof",
+    "kind": "group",
+    "full_path": "proof",
+    "parent_id": null,
+    "avatar_url": null,
+    "web_url": "https://gitlab.test/groups/proof"
+   }
+  },
+  "lists": [
+   {
+    "id": 3,
+    "label": {
+     "id": 2,
+     "name": "Doing",
+     "description": null,
+     "text_color": "#1F1E24",
+     "description_html": "",
+     "color": "#F0AD4E",
+     "archived": false
+    },
+    "position": 0
+   },
+   {
+    "id": 4,
+    "label": {
+     "id": 3,
+     "name": "Review",
+     "description": null,
+     "text_color": "#FFFFFF",
+     "description_html": "",
+     "color": "#5CB85C",
+     "archived": false
+    },
+    "position": 1
+   }
+  ]
+ }
+]

@@ -9,3 +9,31 @@ username: CHANGE_ME
 email: CHANGE_ME
 # A personal access token (Preferences → Access tokens) with read_api; api for merge requests from the dashboard. Read by glab as GITLAB_TOKEN.
 token: CHANGE_ME
+# https, or http for a GitLab of your own served without TLS on a local address.
+scheme: https
+# The issues as work items (the tracker family): read one, analyze it, have the workspace's AI CLI work it on a
+# branch in a screen session you watch, then, with writes on, push the branch and open a draft merge request, note,
+# log time and move it, each a click after a preview. See @webship.co/workspace-tracker for every key.
+tracker:
+  # Writes to GitLab: push and draft merge request, notes, worklogs, close and reopen, board lists, labels, assignee, new issues. Off by default.
+  allow_writes: false
+  # Author sessions at once.
+  max_agents: 1
+  # The project a workspace project works against when its remote is not on this GitLab and it remembers none (group/name).
+  default_scope: ""
+  # The projects the list may be switched to (group/name); empty is any.
+  scopes: []
+  # branch: a new branch in the project; worktree: a git worktree outside the workspace folders.
+  work_in: branch
+  # required: Claude Code's sandbox for the author session, and no session without it; off: a person's choice.
+  sandbox: required
+  # Domains the sandbox allows (the project's package registries).
+  network_domains: []
+  # WebFetch and WebSearch in the author session.
+  allow_web: false
+  # The notes an issue's snapshot keeps: members (Developer and above), all, none.
+  comments_from: members
+  # An issue from outside the project (Guests and Reporters included): analyze (work it only after a confirmation that names its author) or refuse.
+  outsider_items: analyze
+  # Open merge requests as drafts.
+  draft: true
