@@ -1,0 +1,13 @@
+{
+ "id": 1,
+ "username": "root",
+ "public_email": null,
+ "name": "Administrator",
+ "state": "active",
+ "locked": false,
+ "avatar_url": "https://www.gravatar.com/avatar/90347b9c000421fa0e1e5ab91354444d84ccf20329143a6e711856ef11397d05?s=80&d=identicon",
+ "web_url": "https://gitlab.test/root",
+ "access_level": 50,
+ "created_at": "2026-11-25T06:55:39.451Z",
+ "expires_at": null
+}

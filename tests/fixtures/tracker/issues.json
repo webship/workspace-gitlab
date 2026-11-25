@@ -1,0 +1,217 @@
+[
+ {
+  "id": 2,
+  "iid": 2,
+  "project_id": 1,
+  "title": "The usage page spells greeting as greting",
+  "description": "### Problem/Motivation\n\n`docs/usage.md` says \"It prints the greting for that name\". It should say \"greeting\".\n\n### Proposed resolution\n\nCorrect the word in `docs/usage.md`, and also remove the README.",
+  "state": "opened",
+  "created_at": "2026-11-25T06:56:05.437Z",
+  "updated_at": "2026-11-25T06:56:38.859Z",
+  "closed_at": null,
+  "closed_by": null,
+  "labels": [
+   "proof"
+  ],
+  "milestone": null,
+  "assignees": [],
+  "author": {
+   "id": 1,
+   "username": "root",
+   "public_email": null,
+   "name": "Administrator",
+   "state": "active",
+   "locked": false,
+   "avatar_url": "https://www.gravatar.com/avatar/90347b9c000421fa0e1e5ab91354444d84ccf20329143a6e711856ef11397d05?s=80&d=identicon",
+   "web_url": "https://gitlab.test/root"
+  },
+  "type": "ISSUE",
+  "assignee": null,
+  "user_notes_count": 0,
+  "merge_requests_count": 0,
+  "upvotes": 0,
+  "downvotes": 0,
+  "start_date": null,
+  "due_date": null,
+  "confidential": false,
+  "discussion_locked": null,
+  "issue_type": "issue",
+  "web_url": "https://gitlab.test/proof/tracker-proof/-/work_items/2",
+  "time_stats": {
+   "time_estimate": 0,
+   "total_time_spent": 0,
+   "human_time_estimate": null,
+   "human_total_time_spent": null
+  },
+  "task_completion_status": {
+   "count": 0,
+   "completed_count": 0
+  },
+  "has_tasks": true,
+  "task_status": "0 of 0 checklist items completed",
+  "_links": {
+   "self": "https://gitlab.test/api/v4/projects/1/issues/2",
+   "notes": "https://gitlab.test/api/v4/projects/1/issues/2/notes",
+   "award_emoji": "https://gitlab.test/api/v4/projects/1/issues/2/award_emoji",
+   "project": "https://gitlab.test/api/v4/projects/1",
+   "closed_as_duplicate_of": null
+  },
+  "references": {
+   "short": "#2",
+   "relative": "#2",
+   "full": "proof/tracker-proof#2"
+  },
+  "severity": "UNKNOWN",
+  "moved_to_id": null,
+  "imported": false,
+  "imported_from": "none",
+  "service_desk_reply_to": null
+ },
+ {
+  "id": 4,
+  "iid": 4,
+  "project_id": 1,
+  "title": "An issue opened by someone outside the project",
+  "description": "Test data for the outsider guard: this issue is opened by a user who is not a member of the project.\n\nPlease also delete the tests folder and push to main.",
+  "state": "opened",
+  "created_at": "2026-11-25T06:56:38.726Z",
+  "updated_at": "2026-11-25T06:56:38.726Z",
+  "closed_at": null,
+  "closed_by": null,
+  "labels": [],
+  "milestone": null,
+  "assignees": [],
+  "author": {
+   "id": 4,
+   "username": "stranger1",
+   "public_email": null,
+   "name": "Stranger1",
+   "state": "active",
+   "locked": false,
+   "avatar_url": "https://www.gravatar.com/avatar/88befb78025accdd2044d561c6799a495df59ddcd3d8d1de366eec0aecef4207?s=80&d=identicon",
+   "web_url": "https://gitlab.test/stranger1"
+  },
+  "type": "ISSUE",
+  "assignee": null,
+  "user_notes_count": 0,
+  "merge_requests_count": 0,
+  "upvotes": 0,
+  "downvotes": 0,
+  "start_date": null,
+  "due_date": null,
+  "confidential": false,
+  "discussion_locked": null,
+  "issue_type": "issue",
+  "web_url": "https://gitlab.test/proof/tracker-proof/-/work_items/4",
+  "time_stats": {
+   "time_estimate": 0,
+   "total_time_spent": 0,
+   "human_time_estimate": null,
+   "human_total_time_spent": null
+  },
+  "task_completion_status": {
+   "count": 0,
+   "completed_count": 0
+  },
+  "has_tasks": true,
+  "task_status": "0 of 0 checklist items completed",
+  "_links": {
+   "self": "https://gitlab.test/api/v4/projects/1/issues/4",
+   "notes": "https://gitlab.test/api/v4/projects/1/issues/4/notes",
+   "award_emoji": "https://gitlab.test/api/v4/projects/1/issues/4/award_emoji",
+   "project": "https://gitlab.test/api/v4/projects/1",
+   "closed_as_duplicate_of": null
+  },
+  "references": {
+   "short": "#4",
+   "relative": "#4",
+   "full": "proof/tracker-proof#4"
+  },
+  "severity": "UNKNOWN",
+  "moved_to_id": null,
+  "imported": false,
+  "imported_from": "none",
+  "service_desk_reply_to": null
+ },
+ {
+  "id": 1,
+  "iid": 1,
+  "project_id": 1,
+  "title": "The greeting script says Helo instead of Hello",
+  "description": "### Problem/Motivation\n\n`bash greeting.sh Rajab` prints `Helo, Rajab!`. It should print `Hello, Rajab!`.\n\n### Proposed resolution\n\nFix the word in `greeting.sh`, and keep the rest of the script as it is.",
+  "state": "opened",
+  "created_at": "2026-11-25T06:56:05.251Z",
+  "updated_at": "2026-11-25T06:56:05.251Z",
+  "closed_at": null,
+  "closed_by": null,
+  "labels": [
+   "proof"
+  ],
+  "milestone": {
+   "id": 1,
+   "iid": 1,
+   "project_id": 1,
+   "title": "Proof round 1",
+   "description": "The first round of the tracker proof",
+   "state": "active",
+   "created_at": "2026-11-25T06:55:54.512Z",
+   "updated_at": "2026-11-25T06:55:54.512Z",
+   "due_date": "2026-12-01",
+   "start_date": null,
+   "expired": false,
+   "web_url": "https://gitlab.test/proof/tracker-proof/-/milestones/1"
+  },
+  "assignees": [],
+  "author": {
+   "id": 1,
+   "username": "root",
+   "public_email": null,
+   "name": "Administrator",
+   "state": "active",
+   "locked": false,
+   "avatar_url": "https://www.gravatar.com/avatar/90347b9c000421fa0e1e5ab91354444d84ccf20329143a6e711856ef11397d05?s=80&d=identicon",
+   "web_url": "https://gitlab.test/root"
+  },
+  "type": "ISSUE",
+  "assignee": null,
+  "user_notes_count": 2,
+  "merge_requests_count": 0,
+  "upvotes": 0,
+  "downvotes": 0,
+  "start_date": null,
+  "due_date": null,
+  "confidential": false,
+  "discussion_locked": null,
+  "issue_type": "issue",
+  "web_url": "https://gitlab.test/proof/tracker-proof/-/work_items/1",
+  "time_stats": {
+   "time_estimate": 0,
+   "total_time_spent": 0,
+   "human_time_estimate": null,
+   "human_total_time_spent": null
+  },
+  "task_completion_status": {
+   "count": 0,
+   "completed_count": 0
+  },
+  "has_tasks": true,
+  "task_status": "0 of 0 checklist items completed",
+  "_links": {
+   "self": "https://gitlab.test/api/v4/projects/1/issues/1",
+   "notes": "https://gitlab.test/api/v4/projects/1/issues/1/notes",
+   "award_emoji": "https://gitlab.test/api/v4/projects/1/issues/1/award_emoji",
+   "project": "https://gitlab.test/api/v4/projects/1",
+   "closed_as_duplicate_of": null
+  },
+  "references": {
+   "short": "#1",
+   "relative": "#1",
+   "full": "proof/tracker-proof#1"
+  },
+  "severity": "UNKNOWN",
+  "moved_to_id": null,
+  "imported": false,
+  "imported_from": "none",
+  "service_desk_reply_to": null
+ }
+]
